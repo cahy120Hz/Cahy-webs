@@ -1,0 +1,199 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 240 20% 2%;
+    --foreground: 0 0% 88%;
+    --card: 240 20% 8%;
+    --card-foreground: 0 0% 88%;
+    --popover: 240 20% 8%;
+    --popover-foreground: 0 0% 88%;
+    --primary: 184 100% 50%;
+    --primary-foreground: 240 20% 2%;
+    --secondary: 240 20% 12%;
+    --secondary-foreground: 0 0% 88%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --muted: 240 20% 12%;
+    --muted-foreground: 240 5% 46%;
+    --accent: 275 70% 55%;
+    --accent-foreground: 0 0% 98%;
+    --border: 240 10% 15%;
+    --input: 240 10% 15%;
+    --ring: 184 100% 50%;
+    --radius: 0.625rem;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-void text-silver font-space antialiased;
+    overflow-x: hidden;
+  }
+
+  ::selection {
+    background: rgba(0, 240, 255, 0.3);
+    color: #fff;
+  }
+
+  ::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: #050507;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: rgba(0, 240, 255, 0.3);
+    border-radius: 3px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: rgba(0, 240, 255, 0.5);
+  }
+}
+
+@layer components {
+  .glass {
+    @apply backdrop-blur-xl border border-white/[0.08] bg-glass;
+  }
+
+  .glass-strong {
+    @apply backdrop-blur-2xl border border-white/[0.12] bg-[rgba(18,18,26,0.8)];
+  }
+
+  .neon-border-cyan {
+    box-shadow: 0 0 15px rgba(0, 240, 255, 0.3), inset 0 0 15px rgba(0, 240, 255, 0.1);
+    border-color: rgba(0, 240, 255, 0.3);
+  }
+
+  .neon-border-purple {
+    box-shadow: 0 0 15px rgba(157, 78, 221, 0.4), inset 0 0 15px rgba(157, 78, 221, 0.1);
+    border-color: rgba(157, 78, 221, 0.3);
+  }
+
+  .text-glow-cyan {
+    text-shadow: 0 0 10px rgba(0, 240, 255, 0.5), 0 0 20px rgba(0, 240, 255, 0.3);
+  }
+
+  .text-glow-purple {
+    text-shadow: 0 0 10px rgba(157, 78, 221, 0.5), 0 0 20px rgba(157, 78, 221, 0.3);
+  }
+
+  .gradient-border {
+    position: relative;
+    background: linear-gradient(135deg, rgba(0, 240, 255, 0.2), rgba(157, 78, 221, 0.2));
+    padding: 1px;
+  }
+
+  .gradient-border-inner {
+    background: #12121A;
+    border-radius: inherit;
+  }
+
+  .holographic {
+    background: linear-gradient(
+      135deg,
+      rgba(0, 240, 255, 0.1) 0%,
+      rgba(157, 78, 221, 0.1) 25%,
+      rgba(0, 240, 255, 0.05) 50%,
+      rgba(157, 78, 221, 0.1) 75%,
+      rgba(0, 240, 255, 0.1) 100%
+    );
+    background-size: 200% 200%;
+    animation: shimmer 3s linear infinite;
+  }
+
+  .scan-line::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, rgba(0, 240, 255, 0.5), transparent);
+    animation: scan 3s linear infinite;
+  }
+
+  .terminal-text {
+    @apply font-mono text-sm;
+    color: #00F0FF;
+  }
+
+  .terminal-text-purple {
+    @apply font-mono text-sm;
+    color: #9D4EDD;
+  }
+
+  .terminal-text-muted {
+    @apply font-mono text-sm;
+    color: #6B6B7B;
+  }
+
+  .status-dot {
+    @apply relative w-2 h-2 rounded-full;
+  }
+
+  .status-dot::after {
+    content: '';
+    @apply absolute inset-0 rounded-full;
+    animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+
+  .status-online {
+    @apply bg-green-500;
+  }
+
+  .status-online::after {
+    @apply bg-green-500;
+  }
+
+  .status-away {
+    @apply bg-yellow-500;
+  }
+
+  .grid-bg {
+    background-image:
+      linear-gradient(rgba(0, 240, 255, 0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(0, 240, 255, 0.03) 1px, transparent 1px);
+    background-size: 50px 50px;
+  }
+
+  .stars-bg {
+    background-image:
+      radial-gradient(1px 1px at 20px 30px, rgba(255,255,255,0.3), transparent),
+      radial-gradient(1px 1px at 40px 70px, rgba(255,255,255,0.2), transparent),
+      radial-gradient(1px 1px at 50px 160px, rgba(255,255,255,0.3), transparent),
+      radial-gradient(1px 1px at 90px 40px, rgba(255,255,255,0.2), transparent),
+      radial-gradient(1px 1px at 130px 80px, rgba(255,255,255,0.3), transparent),
+      radial-gradient(1px 1px at 160px 120px, rgba(255,255,255,0.2), transparent);
+    background-size: 200px 200px;
+  }
+}
+
+@layer utilities {
+  .will-change-transform {
+    will-change: transform;
+  }
+
+  .perspective-1000 {
+    perspective: 1000px;
+  }
+
+  .preserve-3d {
+    transform-style: preserve-3d;
+  }
+
+  .backface-hidden {
+    backface-visibility: hidden;
+  }
+}
